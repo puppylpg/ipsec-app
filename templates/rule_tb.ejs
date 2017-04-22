@@ -2,7 +2,11 @@
     <tr><td></td><td></td><td></td><td></td></tr>
 <% } else { %>
     <% rules.forEach(function(rule) { %>
-<tr>
+        <% if(valids[rules.indexOf(rule)] === "FALSE") { %>
+            <tr bgcolor="red">
+        <% } else { %>
+            <tr>
+        <% } %>
     <td><%= rule.source %>/<%=rule.srcPrefixLen%></td>
     <td><%= rule.destination %>/<%=rule.dstPrefixLen%></td>
         <% if (rule.action === 0) { %>

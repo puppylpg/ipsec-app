@@ -92,6 +92,7 @@
                 </table>
                 <div style="text-align: center">
                     <input type="button" value="添加规则" class="layui-btn layui-btn-primary layui-btn-small" onclick="addRuleToIndex(true, this)" />
+                    <input type="button" value="显示冲突详情" class="layui-btn layui-btn-primary layui-btn-small" onclick="showACLInfo()" />
                 </div>
             </div>
         </div>
@@ -186,6 +187,7 @@
         function refreshConnectTable() {
 
             getConns(function(connList) {
+                console.log("conns: ", connList);
                 var activeConns = connList.active;
                 //清空connselect数组
                 connNameSelect.splice(0, connNameSelect.length);
@@ -206,13 +208,15 @@
         //刷新 rule 列表
         function refreshRuleTable() {
 
-            getRules(function(ruleList) {
-                console.log("rules:", ruleList);
+            getRules(function(ruleList, validList) {
+                console.log("rules: ", ruleList);
+                console.log("valids: ", validList);
 
                 new EJS({
                     url: 'templates/rule_tb.ejs'
                 }).update('rule_tb', {
-                    rules: ruleList
+                    rules: ruleList,
+                    valids: validList
                 });
             });
         }
@@ -430,6 +434,11 @@
                     });
                 });
             });
+        }
+        
+        
+        function showACLInfo(){
+            alert(Date());
         }
     </script>
 </body>

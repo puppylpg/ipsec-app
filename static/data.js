@@ -10,8 +10,15 @@ function getRules(callback) {
         type: 'POST',
         contentType:'application/json',
         success:function(data){
-            var ruleList = JSON.parse(data.output.result)
-            callback(ruleList)
+            console.log("===> JSON.stringify(data): " + JSON.stringify(data));
+            console.log("===> data.output.result: " + data.output.result);
+            //var tmp = JSON.parse(data.output.result)
+            //var rule_valid = tmp[0]
+            var rule_valid = JSON.parse(data.output.result)
+            console.log("===> JSON.stringify(rule_valid): " + JSON.stringify(rule_valid))
+            var ruleList = JSON.parse(rule_valid.RULES)
+            var validList = JSON.parse(rule_valid.VALIDS)
+            callback(ruleList, validList)
         }
     });
 }
