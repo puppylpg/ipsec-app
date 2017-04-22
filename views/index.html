@@ -436,9 +436,12 @@
             });
         }
         
-        
+        // 展示ACL冲突信息
         function showACLInfo(){
-            alert(Date());
+            getAclInfo(function(aclInfo) {
+                console.log("aclInfo: ", aclInfo);
+                alert(aclInfo);
+            });
         }
     </script>
 </body>

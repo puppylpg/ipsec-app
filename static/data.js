@@ -24,6 +24,23 @@ function getRules(callback) {
 }
 
 /**
+ * @param callback(aclInfo) callback function to output aclInfo
+ */
+function getAclInfo(callback) {
+    $.ajax({
+        url: '/api/IPsec:aclInfo',
+        username: 'admin',
+        password: 'admin',
+        type: 'POST',
+        contentType:'application/json',
+        success:function(data){
+            var aclInfo = data.output.result
+            callback(aclInfo)
+        }
+    });
+}
+
+/**
  * add a rule to the end of the rule list
  * @param rule rule to be added
  * @param callback(result) callback function to handle result
