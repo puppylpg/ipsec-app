@@ -19,6 +19,7 @@
     <td>
         <input type='button' value='插入' class='layui-btn layui-btn-primary layui-btn-small' onclick='addRuleToIndex(false, this)' />
         <input type='button' value='删除' class='layui-btn layui-btn-primary layui-btn-small' onclick='deleteRuleByIndex("<%= rules.indexOf(rule) %>")' />
+        <input type='button' value='下发规则' class='layui-btn layui-btn-primary layui-btn-small' onclick='issueConfigByRuleIndex("<%= rules.indexOf(rule) %>")' />
     </td>
 </tr>
     <% }); %>

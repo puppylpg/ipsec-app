@@ -395,6 +395,14 @@
             })
         }
 
+        // 根据rule下发ipsec.conf配置文件
+        function issueConfigByRuleIndex(index) {
+            issueConfig(index, function (result) {
+                console.log("issue configuration of rule " + index + ".");
+                alert(result)
+            })
+        }
+
         //刷新 gw 状态
         function refreshGW() {
 

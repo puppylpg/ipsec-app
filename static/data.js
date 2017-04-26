@@ -93,6 +93,25 @@ function deleteRule(pos, callback) {
 }
 
 /**
+ * issue configuration according to a rule
+ * @param pos
+ */
+function issueConfig(pos) {
+    var jsonInput = {input: {position: pos}};
+    $.ajax({
+        url: '/api/IPsec:issueConfig',
+        username: 'admin',
+        password: 'admin',
+        type: 'POST',
+        data: JSON.stringify(jsonInput),
+        contentType:'application/json',
+        success:function(data){
+            callback(data.output.result)
+        }
+    });
+}
+
+/**
  * @param callback(connList) callback function to handle conns
  */
 function getConns(callback) {
