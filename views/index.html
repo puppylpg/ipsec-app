@@ -308,7 +308,6 @@
                         var ruleSrcPre = document.getElementById('srcPrefixLen').value;
                         var ruleDest = document.getElementById('destination').value;
                         var ruleDestPre = document.getElementById('dstPrefixLen').value;
-                        var ruleConn = document.getElementById('connectionName').value;
                         var ruleAction = document.getElementById('action').value;
 
                         var ruleData = {
@@ -316,8 +315,7 @@
                             srcPrefixLen: ruleSrcPre,
                             destination: ruleDest,
                             dstPrefixLen: ruleDestPre,
-                            action: ruleAction,
-                            connectionName: ruleConn
+                            action: ruleAction
                         };
                         addRuleData(isEnd, curInput, ruleData);
                         layer.close(layerIndex);

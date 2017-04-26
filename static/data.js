@@ -93,63 +93,6 @@ function deleteRule(pos, callback) {
 }
 
 /**
- * @param callback(connList) callback function to handle conns
- */
-function getConns(callback) {
-    $.ajax({
-        url: '/api/IPsec:conn-all',
-        username: 'admin',
-        password: 'admin',
-        type: 'POST',
-        contentType:'application/json',
-        success:function(data){
-            var connList = JSON.parse(data.output.result)
-            callback(connList)
-        }
-    });
-}
-
-/**
- * if have an existing conn with the same name, then update, if not add
- * @param conn conn to be added/updated
- * @param callback(result) callback function to handle result
- */
-function putConn(conn, callback) {
-    var jsonInput = {input: conn}
-    $.ajax({
-        url: '/api/IPsec:conn-add',
-        username: 'admin',
-        password: 'admin',
-        type: 'POST',
-        data: JSON.stringify(jsonInput),
-        contentType:'application/json',
-        success:function(data){
-            callback(data.output.result)
-        }
-    })
-}
-
-/**
- * delete a connection
- * @param name conn to be deleted
- * @param callback(result) callback function to handle result
- */
-function deleteConn(name, callback) {
-    var jsonInput = {input: {name: name}};
-    $.ajax({
-        url: '/api/IPsec:conn-del',
-        username: 'admin',
-        password: 'admin',
-        type: 'POST',
-        data: JSON.stringify(jsonInput),
-        contentType:'application/json',
-        success:function(data){
-            callback(data.output.result)
-        }
-    })
-}
-
-/**
  * @param callback(gatewayList) callback function to handle conns
  */
 function getGateways(callback) {
