@@ -96,7 +96,7 @@ function deleteRule(pos, callback) {
  * issue configuration according to a rule
  * @param pos
  */
-function issueConfig(pos) {
+function issueConfig(pos, callback) {
     var jsonInput = {input: {position: pos}};
     $.ajax({
         url: '/api/IPsec:issueConfig',
@@ -107,6 +107,7 @@ function issueConfig(pos) {
         contentType:'application/json',
         success:function(data){
             callback(data.output.result)
+            console.log("===>" + data.output.result)
         }
     });
 }
